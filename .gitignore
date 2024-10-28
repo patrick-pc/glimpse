@@ -1,0 +1,28 @@
+# Ignore environment variable files
+.env
+
+# Ignore any local configuration files that might contain secrets
+*.xcconfig
+
+# Ignore any scripts that might contain API keys
+setup_env.sh
+
+# Xcode
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Accidental .DS_Store files
+.DS_Store
+
+# StoreKit
+*.storekit

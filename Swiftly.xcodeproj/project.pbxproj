@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		797AD5EE2CCF2BE500B37309 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 797AD5ED2CCF2BE500B37309 /* RevenueCat */; };
+		797AD5F02CCF2BE500B37309 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 797AD5EF2CCF2BE500B37309 /* RevenueCatUI */; };
+		797AD5F32CCF2F0E00B37309 /* SuperwallKit in Frameworks */ = {isa = PBXBuildFile; productRef = 797AD5F22CCF2F0E00B37309 /* SuperwallKit */; };
+		797AD5F52CCF325800B37309 /* RCPurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD5F42CCF325800B37309 /* RCPurchaseController.swift */; };
+		797AD5FD2CD0136400B37309 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD5FC2CD0136400B37309 /* Constants.swift */; };
 		7981A02C2CCC747100CA71D4 /* SwiftlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981A02B2CCC747100CA71D4 /* SwiftlyApp.swift */; };
 		7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981A02D2CCC747100CA71D4 /* ContentView.swift */; };
 		7981A0302CCC747300CA71D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7981A02F2CCC747300CA71D4 /* Assets.xcassets */; };
@@ -49,6 +54,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		797AD5F42CCF325800B37309 /* RCPurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCPurchaseController.swift; sourceTree = "<group>"; };
+		797AD5F62CCF371B00B37309 /* SyncedProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SyncedProducts.storekit; sourceTree = "<group>"; };
+		797AD5FC2CD0136400B37309 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7981A0282CCC747100CA71D4 /* Swiftly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7981A02B2CCC747100CA71D4 /* SwiftlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftlyApp.swift; sourceTree = "<group>"; };
 		7981A02D2CCC747100CA71D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,17 +88,20 @@
 				7981A07D2CCC763700CA71D4 /* FirebaseStorageCombine-Community in Frameworks */,
 				7981A0792CCC763700CA71D4 /* FirebaseRemoteConfig in Frameworks */,
 				7981A0632CCC763700CA71D4 /* FirebaseDatabase in Frameworks */,
+				797AD5EE2CCF2BE500B37309 /* RevenueCat in Frameworks */,
 				7981A0652CCC763700CA71D4 /* FirebaseDynamicLinks in Frameworks */,
 				7981A0572CCC763700CA71D4 /* FirebaseAppCheck in Frameworks */,
 				7981A05B2CCC763700CA71D4 /* FirebaseAuth in Frameworks */,
 				7981A0512CCC763700CA71D4 /* FirebaseAnalytics in Frameworks */,
 				7981A0672CCC763700CA71D4 /* FirebaseFirestore in Frameworks */,
 				7981A0752CCC763700CA71D4 /* FirebaseMessaging in Frameworks */,
+				797AD5F02CCF2BE500B37309 /* RevenueCatUI in Frameworks */,
 				7981A0712CCC763700CA71D4 /* FirebaseInstallations in Frameworks */,
 				7981A06D2CCC763700CA71D4 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				7981A0592CCC763700CA71D4 /* FirebaseAppDistribution-Beta in Frameworks */,
 				7981A0552CCC763700CA71D4 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				7981A06F2CCC763700CA71D4 /* FirebaseInAppMessaging-Beta in Frameworks */,
+				797AD5F32CCF2F0E00B37309 /* SuperwallKit in Frameworks */,
 				7981A05D2CCC763700CA71D4 /* FirebaseAuthCombine-Community in Frameworks */,
 				7981A0612CCC763700CA71D4 /* FirebaseCrashlytics in Frameworks */,
 				7981A0732CCC763700CA71D4 /* FirebaseMLModelDownloader in Frameworks */,
@@ -106,6 +117,7 @@
 		7981A01F2CCC747100CA71D4 = {
 			isa = PBXGroup;
 			children = (
+				797AD5F62CCF371B00B37309 /* SyncedProducts.storekit */,
 				7981A02A2CCC747100CA71D4 /* Swiftly */,
 				7981A0292CCC747100CA71D4 /* Products */,
 			);
@@ -178,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				7981A03E2CCC749F00CA71D4 /* Services */,
+				797AD5FC2CD0136400B37309 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -186,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				7981A04D2CCC755400CA71D4 /* FirebaseService.swift */,
+				797AD5F42CCF325800B37309 /* RCPurchaseController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -231,6 +245,9 @@
 				7981A07A2CCC763700CA71D4 /* FirebaseStorage */,
 				7981A07C2CCC763700CA71D4 /* FirebaseStorageCombine-Community */,
 				7981A07E2CCC763700CA71D4 /* FirebaseVertexAI */,
+				797AD5ED2CCF2BE500B37309 /* RevenueCat */,
+				797AD5EF2CCF2BE500B37309 /* RevenueCatUI */,
+				797AD5F22CCF2F0E00B37309 /* SuperwallKit */,
 			);
 			productName = Swiftly;
 			productReference = 7981A0282CCC747100CA71D4 /* Swiftly.app */;
@@ -262,6 +279,8 @@
 			mainGroup = 7981A01F2CCC747100CA71D4;
 			packageReferences = (
 				7981A04F2CCC763700CA71D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				797AD5EC2CCF2BE500B37309 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				797AD5F12CCF2F0E00B37309 /* XCRemoteSwiftPackageReference "Superwall-iOS" */,
 			);
 			productRefGroup = 7981A0292CCC747100CA71D4 /* Products */;
 			projectDirPath = "";
@@ -293,8 +312,10 @@
 				7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */,
 				7983BC512CCDAA180038CD8A /* NavigationView.swift in Sources */,
 				7981A0422CCC751100CA71D4 /* HomeView.swift in Sources */,
+				797AD5F52CCF325800B37309 /* RCPurchaseController.swift in Sources */,
 				7981A0442CCC752100CA71D4 /* SplashView.swift in Sources */,
 				7981A0462CCC752A00CA71D4 /* SettingsView.swift in Sources */,
+				797AD5FD2CD0136400B37309 /* Constants.swift in Sources */,
 				7981A04A2CCC754200CA71D4 /* AuthViewModel.swift in Sources */,
 				7981A04C2CCC754800CA71D4 /* User.swift in Sources */,
 				7981A04E2CCC755400CA71D4 /* FirebaseService.swift in Sources */,
@@ -511,6 +532,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		797AD5EC2CCF2BE500B37309 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+		797AD5F12CCF2F0E00B37309 /* XCRemoteSwiftPackageReference "Superwall-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/superwall/Superwall-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.11.1;
+			};
+		};
 		7981A04F2CCC763700CA71D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -522,6 +559,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		797AD5ED2CCF2BE500B37309 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 797AD5EC2CCF2BE500B37309 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		797AD5EF2CCF2BE500B37309 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 797AD5EC2CCF2BE500B37309 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+		797AD5F22CCF2F0E00B37309 /* SuperwallKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 797AD5F12CCF2F0E00B37309 /* XCRemoteSwiftPackageReference "Superwall-iOS" */;
+			productName = SuperwallKit;
+		};
 		7981A0502CCC763700CA71D4 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7981A04F2CCC763700CA71D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

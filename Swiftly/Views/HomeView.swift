@@ -5,11 +5,14 @@
 //  Created by Patrick on 10/25/24.
 //
 
+import RevenueCat
+import StoreKit
+import SuperwallKit
 import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var authVM: AuthViewModel
-    @State private var userDefaults: [String: Any] = [:]
+    @EnvironmentObject var mainVM: MainViewModel
 
     @State private var showSettings = false
 
@@ -22,20 +25,30 @@ struct HomeView: View {
                     Text("No current user data available")
                 }
 
+                InfoRow(label: "userId", value: UserDefaults.standard.string(forKey: "userId") ?? "nil")
+                InfoRow(label: "RC Entitlement", value: mainVM.isPro ? "Pro" : "Free")
+
                 HStack {
                     Button("Settings") {
                         showSettings = true
                     }
                     .buttonStyle(.bordered)
-                    .frame(maxWidth: .infinity)
 
                     Spacer()
+
+                    if !mainVM.isPro {
+                        Button("Paywall") {
+                            Superwall.shared.register(event: "campaign_trigger")
+                        }
+                        .buttonStyle(.bordered)
+
+                        Spacer()
+                    }
 
                     Button("Sign Out") {
                         authVM.signOut()
                     }
                     .buttonStyle(.bordered)
-                    .frame(maxWidth: .infinity)
                 }
             }
             .padding()

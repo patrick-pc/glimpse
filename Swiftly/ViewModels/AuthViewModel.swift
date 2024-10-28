@@ -122,6 +122,7 @@ class AuthViewModel: NSObject, ObservableObject {
         do {
             let authResult = try await Auth.auth().signIn(with: credential)
             let firebaseUser = authResult.user
+            UserDefaults.standard.set(firebaseUser.uid, forKey: "userId")
 
             // Fetch user data from Firestore
             await fetchUser(uid: firebaseUser.uid)

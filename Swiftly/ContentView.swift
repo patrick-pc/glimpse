@@ -35,22 +35,6 @@ struct ContentView: View {
         }
     }
 
-    @ViewBuilder
-    private func pageView(for page: Page) -> some View {
-        switch page {
-        case .splash:
-            SplashView()
-        case .auth:
-            AuthView()
-        case .onboarding:
-            OnboardingView()
-        case .home:
-            HomeView()
-        case .settings:
-            SettingsView()
-        }
-    }
-
     private func setupInitialState() {
         if authVM.authState == .authenticated {
             mainVM.currentPage = .home
