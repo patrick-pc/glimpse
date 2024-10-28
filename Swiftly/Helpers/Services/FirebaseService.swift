@@ -5,19 +5,19 @@
 //  Created by Patrick on 10/25/24.
 //
 
-import Foundation
 import Firebase
 import FirebaseFirestore
+import Foundation
 
 class FirebaseService {
     static let shared = FirebaseService()
-    
+
     private let db = Firestore.firestore()
-    
+
     private init() {}
-    
+
     // MARK: - Firestore Operations
-    
+
     // Add Document
     func addDocument<T: Codable>(collection: String, data: T) async throws -> String {
         let documentRef = db.collection(collection).document()
@@ -28,7 +28,7 @@ class FirebaseService {
             throw error
         }
     }
-    
+
     // Update Document
     func updateDocument<T: Codable>(collection: String, documentId: String, data: T) async throws {
         let documentRef = db.collection(collection).document(documentId)
@@ -38,7 +38,7 @@ class FirebaseService {
             throw error
         }
     }
-    
+
     // Delete Document
     func deleteDocument(collection: String, documentId: String) async throws {
         let documentRef = db.collection(collection).document(documentId)
@@ -48,7 +48,7 @@ class FirebaseService {
             throw error
         }
     }
-    
+
     // Get Document by ID
     func getDocument<T: Codable>(collection: String, documentId: String) async throws -> T {
         let documentRef = db.collection(collection).document(documentId)
@@ -62,7 +62,7 @@ class FirebaseService {
             throw error
         }
     }
-    
+
     // Fetch Documents (with optional query)
     func getDocuments<T: Codable>(
         collection: String,
@@ -71,15 +71,15 @@ class FirebaseService {
         limit: Int? = nil
     ) async throws -> [T] {
         var query: Query = db.collection(collection)
-        
+
         if let field = whereField, let value = value {
             query = query.whereField(field, isEqualTo: value)
         }
-        
+
         if let limit = limit {
             query = query.limit(to: limit)
         }
-        
+
         do {
             let querySnapshot = try await query.getDocuments()
             let documents = try querySnapshot.documents.compactMap { document in
@@ -101,7 +101,7 @@ enum FirestoreError: LocalizedError {
     case documentNotFound
     case dataDecodingError
     case unknownError
-    
+
     var errorDescription: String? {
         switch self {
         case .documentNotFound:

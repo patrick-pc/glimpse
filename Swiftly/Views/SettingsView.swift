@@ -23,7 +23,7 @@ struct SettingsView: View {
         .padding()
 
         ScrollView {
-            VStack (spacing: 24) {
+            VStack(spacing: 24) {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
                         Text("App")
@@ -54,7 +54,7 @@ struct SettingsView: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) { 
+                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))
                             .symbolRenderingMode(.hierarchical)
@@ -67,9 +67,9 @@ struct SettingsView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                    .opacity(0.05)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
+                            .opacity(0.05)
                     )
                     HStack {
                         Image(systemName: "star.fill")
@@ -88,7 +88,7 @@ struct SettingsView: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) { 
+                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))
                             .symbolRenderingMode(.hierarchical)
@@ -101,9 +101,9 @@ struct SettingsView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                    .opacity(0.05)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
+                            .opacity(0.05)
                     )
                     HStack {
                         Image(systemName: "hand.thumbsup.fill")
@@ -122,7 +122,7 @@ struct SettingsView: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) { 
+                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))
                             .symbolRenderingMode(.hierarchical)
@@ -135,9 +135,9 @@ struct SettingsView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                    .opacity(0.05)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
+                            .opacity(0.05)
                     )
                     .onTapGesture {
                         isFeedbackSheetPresented = true
@@ -174,7 +174,7 @@ struct SettingsView: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) { 
+                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))
                             .symbolRenderingMode(.hierarchical)
@@ -187,9 +187,9 @@ struct SettingsView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                    .opacity(0.05)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
+                            .opacity(0.05)
                     )
                     HStack {
                         Image(systemName: "lock.fill")
@@ -208,7 +208,7 @@ struct SettingsView: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) { 
+                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))
                             .symbolRenderingMode(.hierarchical)
@@ -221,9 +221,9 @@ struct SettingsView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                    .opacity(0.05)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
+                            .opacity(0.05)
                     )
                 }
                 .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -257,7 +257,7 @@ struct SettingsView: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) { 
+                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))
                             .symbolRenderingMode(.hierarchical)
@@ -270,9 +270,9 @@ struct SettingsView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                    .opacity(0.05)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
+                            .opacity(0.05)
                     )
                     HStack {
                         Image(systemName: "rectangle.portrait.and.arrow.right.fill")
@@ -291,7 +291,7 @@ struct SettingsView: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) { 
+                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))
                             .symbolRenderingMode(.hierarchical)
@@ -304,9 +304,9 @@ struct SettingsView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                    .opacity(0.05)
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
+                            .opacity(0.05)
                     )
                 }
                 .frame(maxWidth: .infinity, alignment: .topLeading)

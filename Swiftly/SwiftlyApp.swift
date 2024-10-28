@@ -24,6 +24,7 @@ struct SwiftlyApp: App {
                 ContentView()
                     .environmentObject(authViewModel)
                     .environmentObject(mainViewModel)
+                    .roundedFont()
 
                 if showSplash {
                     SplashView()

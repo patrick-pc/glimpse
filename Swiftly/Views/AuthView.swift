@@ -31,7 +31,6 @@ struct AuthView: View {
                     .clipped()
 
                 Text("Fast and flexible SwiftUI boilerplate")
-                    .font(.subheadline)
                     .frame(width: 300, alignment: .top)
                     .foregroundStyle(.primary.opacity(0.5))
                     .multilineTextAlignment(.center)

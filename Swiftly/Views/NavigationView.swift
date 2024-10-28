@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NavigationView.swift
 //  Swiftly
 //
 //  Created by Patrick on 10/26/24.
@@ -15,7 +15,7 @@ struct NavigationView: View {
             TabView(selection: $selectedTab) {
                 Image(systemName: "calendar")
                     .tag(0)
-                
+
                 HomeView()
                     .tag(1)
 
@@ -59,7 +59,7 @@ struct NavigationView: View {
                         .background(.primary.opacity(0.1))
                         .clipShape(Circle())
                 }
-                
+
                 Spacer()
             }
             .padding(.vertical, 16)

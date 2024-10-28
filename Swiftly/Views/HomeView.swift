@@ -67,6 +67,7 @@ struct UserInfoSection: View {
         VStack(alignment: .leading, spacing: 24) {
             Text(title)
                 .font(.headline)
+                .fontDesign(.rounded)
                 .frame(maxWidth: .infinity, alignment: .center)
 
             InfoRow(label: "ID", value: user.id)

@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import SwiftUI
 import RevenueCat
+import SwiftUI
+
 class MainViewModel: NSObject, ObservableObject {
     @Published var currentPage: Page = .onboarding
     @Published var isPro = false
@@ -27,11 +28,12 @@ class MainViewModel: NSObject, ObservableObject {
     }
 
     func updateEntitlements(customerInfo: CustomerInfo?) {
-        self.isPro = customerInfo?.entitlements["Pro"]?.isActive == true
+        isPro = customerInfo?.entitlements["Pro"]?.isActive == true
     }
 }
+
 extension MainViewModel: PurchasesDelegate {
-    func purchases(_ purchases: Purchases, receivedUpdated customerInfo: CustomerInfo) {
+    func purchases(_: Purchases, receivedUpdated customerInfo: CustomerInfo) {
         DispatchQueue.main.async {
             self.updateEntitlements(customerInfo: customerInfo)
         }

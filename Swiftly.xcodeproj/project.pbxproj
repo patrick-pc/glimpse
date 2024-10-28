@@ -12,6 +12,7 @@
 		797AD5F32CCF2F0E00B37309 /* SuperwallKit in Frameworks */ = {isa = PBXBuildFile; productRef = 797AD5F22CCF2F0E00B37309 /* SuperwallKit */; };
 		797AD5F52CCF325800B37309 /* RCPurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD5F42CCF325800B37309 /* RCPurchaseController.swift */; };
 		797AD5FD2CD0136400B37309 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD5FC2CD0136400B37309 /* Constants.swift */; };
+		797AD6002CD03AC000B37309 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD5FF2CD03AC000B37309 /* ViewModifiers.swift */; };
 		7981A02C2CCC747100CA71D4 /* SwiftlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981A02B2CCC747100CA71D4 /* SwiftlyApp.swift */; };
 		7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981A02D2CCC747100CA71D4 /* ContentView.swift */; };
 		7981A0302CCC747300CA71D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7981A02F2CCC747300CA71D4 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		797AD5F42CCF325800B37309 /* RCPurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCPurchaseController.swift; sourceTree = "<group>"; };
 		797AD5F62CCF371B00B37309 /* SyncedProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SyncedProducts.storekit; sourceTree = "<group>"; };
 		797AD5FC2CD0136400B37309 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		797AD5FF2CD03AC000B37309 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		7981A0282CCC747100CA71D4 /* Swiftly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7981A02B2CCC747100CA71D4 /* SwiftlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftlyApp.swift; sourceTree = "<group>"; };
 		7981A02D2CCC747100CA71D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		797AD5FE2CD03AB200B37309 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				797AD5FF2CD03AC000B37309 /* ViewModifiers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7981A01F2CCC747100CA71D4 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 		7981A03D2CCC749A00CA71D4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				797AD5FE2CD03AB200B37309 /* Extensions */,
 				7981A03E2CCC749F00CA71D4 /* Services */,
 				797AD5FC2CD0136400B37309 /* Constants.swift */,
 			);
@@ -309,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				797AD6002CD03AC000B37309 /* ViewModifiers.swift in Sources */,
 				7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */,
 				7983BC512CCDAA180038CD8A /* NavigationView.swift in Sources */,
 				7981A0422CCC751100CA71D4 /* HomeView.swift in Sources */,

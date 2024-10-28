@@ -5,9 +5,9 @@
 //  Created by Patrick on 10/27/24.
 //
 
-import SuperwallKit
 import RevenueCat
 import StoreKit
+import SuperwallKit
 
 enum PurchasingError: Error {
     case productNotFound
@@ -15,6 +15,7 @@ enum PurchasingError: Error {
 
 final class RCPurchaseController: PurchaseController {
     // MARK: - Sync Subscription Status
+
     /// Makes sure that Superwall knows the customers subscription status by
     /// changing `Superwall.shared.subscriptionStatus`
     func syncSubscriptionStatus() {
@@ -24,8 +25,8 @@ final class RCPurchaseController: PurchaseController {
                 // Gets called whenever new CustomerInfo is available
                 let hasActiveSubscription = !customerInfo.entitlements.active.isEmpty // Why? -> https://www.revenuecat.com/docs/entitlements#entitlements
                 if hasActiveSubscription {
-                Superwall.shared.subscriptionStatus = .active
-            } else {
+                    Superwall.shared.subscriptionStatus = .active
+                } else {
                     Superwall.shared.subscriptionStatus = .inactive
                 }
             }
@@ -33,6 +34,7 @@ final class RCPurchaseController: PurchaseController {
     }
 
     // MARK: - Handle Purchases
+
     /// Makes a purchase with RevenueCat and returns its result. This gets called when
     /// someone tries to purchase a product on one of your paywalls.
     func purchase(product: SKProduct) async -> PurchaseResult {
@@ -49,7 +51,8 @@ final class RCPurchaseController: PurchaseController {
                 return .cancelled
             } else {
                 if let transaction = revenueCatResult.transaction,
-                purchaseDate > transaction.purchaseDate {
+                   purchaseDate > transaction.purchaseDate
+                {
                     return .restored
                 } else {
                     return .purchased
@@ -67,13 +70,14 @@ final class RCPurchaseController: PurchaseController {
     }
 
     // MARK: - Handle Restores
+
     /// Makes a restore with RevenueCat and returns `.restored`, unless an error is thrown.
     /// This gets called when someone tries to restore purchases on one of your paywalls.
     func restorePurchases() async -> RestorationResult {
         do {
             _ = try await Purchases.shared.restorePurchases()
             return .restored
-        } catch let error {
+        } catch {
             return .failed(error)
         }
     }

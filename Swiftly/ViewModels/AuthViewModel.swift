@@ -88,7 +88,7 @@ class AuthViewModel: NSObject, ObservableObject {
         switch result {
         case let .failure(failure):
             print("Sign-in with Apple failed:", failure.localizedDescription)
-            self.error = .signInWithAppleFailed(failure.localizedDescription)
+            error = .signInWithAppleFailed(failure.localizedDescription)
         case let .success(authorization):
             if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
                 guard let nonce = currentNonce else {
@@ -96,12 +96,12 @@ class AuthViewModel: NSObject, ObservableObject {
                 }
                 guard let appleIDToken = appleIDCredential.identityToken else {
                     print("Unable to fetch identify token.")
-                    self.error = .unableToFetchIdentityToken
+                    error = .unableToFetchIdentityToken
                     return
                 }
                 guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                     print("Unable to serialize token string from data:", appleIDToken.debugDescription)
-                    self.error = .unableToSerializeIdentityToken
+                    error = .unableToSerializeIdentityToken
                     return
                 }
 
@@ -171,8 +171,8 @@ class AuthViewModel: NSObject, ObservableObject {
     }
 }
 
-
 // MARK: - Auth Helper Extensions and Functions
+
 extension ASAuthorizationAppleIDCredential {
     func displayName() -> String {
         return [fullName?.givenName, fullName?.familyName]
@@ -229,7 +229,7 @@ enum AuthError: LocalizedError, Identifiable {
 
     var errorDescription: String? {
         switch self {
-        case .signInWithAppleFailed(let message):
+        case let .signInWithAppleFailed(message):
             return "Sign-in with Apple failed: \(message)"
         case .authenticationFailed:
             return "Authentication failed. Please try again."
@@ -241,7 +241,7 @@ enum AuthError: LocalizedError, Identifiable {
             return "Unable to fetch identity token."
         case .unableToSerializeIdentityToken:
             return "Unable to serialize identity token."
-        case .custom(let message):
+        case let .custom(message):
             return message
         }
     }
