@@ -12,13 +12,11 @@ struct ContentView: View {
     @EnvironmentObject var authVM: AuthViewModel
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                if authVM.authState == .unauthenticated {
-                    AuthView()
-                } else {
-                    NavigationView()
-                }
+        ZStack {
+            if authVM.authState == .unauthenticated {
+                AuthView()
+            } else {
+                BottomNavigationView()
             }
         }
         .onAppear {

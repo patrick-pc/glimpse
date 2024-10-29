@@ -21,13 +21,13 @@ class MainViewModel: NSObject, ObservableObject {
                 if let error = error {
                     self?.errorMessage = error.localizedDescription
                 } else {
-                    self?.updateEntitlements(customerInfo: customerInfo)
+                    self?.checkSubscriptionStatus(customerInfo: customerInfo)
                 }
             }
         }
     }
 
-    func updateEntitlements(customerInfo: CustomerInfo?) {
+    func checkSubscriptionStatus(customerInfo: CustomerInfo?) {
         isPro = customerInfo?.entitlements["Pro"]?.isActive == true
     }
 }
@@ -35,7 +35,7 @@ class MainViewModel: NSObject, ObservableObject {
 extension MainViewModel: PurchasesDelegate {
     func purchases(_: Purchases, receivedUpdated customerInfo: CustomerInfo) {
         DispatchQueue.main.async {
-            self.updateEntitlements(customerInfo: customerInfo)
+            self.checkSubscriptionStatus(customerInfo: customerInfo)
         }
     }
 }
