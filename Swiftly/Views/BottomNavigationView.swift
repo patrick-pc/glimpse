@@ -24,7 +24,7 @@ struct BottomNavigationView: View {
                 .tag(1)
 
                 NavigationStack {
-                    Image(systemName: "flame.fill")
+                    UserView()
                 }
                 .tag(2)
             }
@@ -36,8 +36,7 @@ struct BottomNavigationView: View {
                 Button(action: {
                     selectedTab = 0
                 }) {
-                    Image(systemName: "book.pages.fill")
-                        .font(.system(size: 16))
+                    Image(systemName: "flame.fill")
                         .padding(12)
                         .foregroundStyle(.primary)
                         .background(.primary.opacity(0.1))
@@ -48,8 +47,8 @@ struct BottomNavigationView: View {
                     selectedTab = 1
                 }) {
                     Image(systemName: "swift")
-                        .font(.system(size: 20))
-                        .padding(20)
+                        .font(.title2)
+                        .padding(18)
                         .foregroundStyle(.background)
                         .background(.primary)
                 }
@@ -58,8 +57,7 @@ struct BottomNavigationView: View {
                 Button(action: {
                     selectedTab = 2
                 }) {
-                    Image(systemName: "flame.fill")
-                        .font(.system(size: 16))
+                    Image(systemName: "person.fill")
                         .padding(12)
                         .foregroundStyle(.primary)
                         .background(.primary.opacity(0.1))

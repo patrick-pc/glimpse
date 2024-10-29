@@ -17,25 +17,19 @@ struct AuthView: View {
             Spacer()
 
             Image(systemName: "swift", variableValue: 0)
-                .font(.system(size: 64, weight: .bold))
+                .font(.system(size: 64))
+                .fontWeight(.bold)
                 .imageScale(.large)
-                .symbolRenderingMode(.hierarchical)
                 .frame(width: 84, height: 84)
 
             VStack(alignment: .center, spacing: 8) {
                 Text("Welcome to Swiftly")
                     .font(.title2)
                     .fontWeight(.semibold)
-                    .fontDesign(.rounded)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .clipped()
 
                 Text("Fast and flexible SwiftUI boilerplate")
-                    .frame(width: 300, alignment: .top)
-                    .foregroundStyle(.primary.opacity(0.5))
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .clipped()
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
             }
 
             Spacer()

@@ -5,12 +5,10 @@
 //  Created by Patrick on 10/28/24.
 //
 
-// ItemListView.swift
-
 import SwiftUI
 
 struct ItemView: View {
-    @StateObject private var viewModel = ItemViewModel()
+    @StateObject private var itemVM = ItemViewModel()
 
     @State private var showUpsertItemSheet = false
     @State private var itemTitle = ""
@@ -20,35 +18,43 @@ struct ItemView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.items) { item in
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(item.title)
-                            .font(.headline)
-                        Text(item.description)
-                            .font(.subheadline)
-                        Text("Created at: \(formattedDate(item.createdAt.dateValue()))")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+                if itemVM.items.isEmpty {
+                    Text("Nothing here yet")
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .listRowBackground(Color.clear)
+                } else {
+                    ForEach(itemVM.items) { item in
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(item.title)
+                                .font(.headline)
+                            Text(item.description)
+                                .font(.subheadline)
+                            Text("Created at: \(formattedDate(item.createdAt.dateValue()))")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        .contentShape(Rectangle()) // Makes the entire area tappable
+                        .onTapGesture {
+                            // Set the selected item and show the edit sheet
+                            selectedItem = item
+                            itemTitle = item.title
+                            itemDescription = item.description
+                            showUpsertItemSheet = true
+                        }
                     }
-                    .contentShape(Rectangle()) // Makes the entire area tappable
-                    .onTapGesture {
-                        // Set the selected item and show the edit sheet
-                        selectedItem = item
-                        itemTitle = item.title
-                        itemDescription = item.description
-                        showUpsertItemSheet = true
-                    }
+                    .onDelete(perform: deleteItems)
                 }
-                .onDelete(perform: deleteItems)
             }
-            .navigationTitle("Items")
-            // .navigationBarTitleDisplayMode(.inline)
+            // .navigationTitle("Firestore")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // ToolbarItem(placement: .principal) {
-                //     Text("Items")
-                //         .font(.headline)
-                //         .fontDesign(.rounded)
-                // }
+                ToolbarItem(placement: .principal) {
+                    Text("Firestore")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .fontDesign(.rounded)
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         selectedItem = nil
@@ -93,9 +99,9 @@ struct ItemView: View {
                             var updatedItem = item
                             updatedItem.title = itemTitle
                             updatedItem.description = itemDescription
-                            viewModel.updateItem(updatedItem)
+                            itemVM.updateItem(updatedItem)
                         } else {
-                            viewModel.addItem(title: itemTitle, description: itemDescription)
+                            itemVM.addItem(title: itemTitle, description: itemDescription)
                         }
                         showUpsertItemSheet = false
                         clearItemFields()
@@ -108,8 +114,8 @@ struct ItemView: View {
 
     // Delete Items
     private func deleteItems(at offsets: IndexSet) {
-        offsets.map { viewModel.items[$0] }.forEach { item in
-            viewModel.deleteItem(item)
+        offsets.map { itemVM.items[$0] }.forEach { item in
+            itemVM.deleteItem(item)
         }
     }
 

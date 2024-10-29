@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoundedFontModifier: ViewModifier {
     init() {
+        // Configure the large title font
         var titleFont = UIFont.preferredFont(forTextStyle: .largeTitle)
         titleFont = UIFont(
             descriptor:
@@ -20,7 +21,7 @@ struct RoundedFontModifier: ViewModifier {
             size: titleFont.pointSize
         )
 
-        /// Set the rounded font
+        // Apply the rounded font to the navigation bar appearance
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: titleFont]
     }
 

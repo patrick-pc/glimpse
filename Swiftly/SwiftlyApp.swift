@@ -24,7 +24,7 @@ struct SwiftlyApp: App {
                 ContentView()
                     .environmentObject(authViewModel)
                     .environmentObject(mainViewModel)
-                    .roundedFont()
+                    .fontDesign(.rounded) // Apply rounded font to the entire app
 
                 if showSplash {
                     SplashView()

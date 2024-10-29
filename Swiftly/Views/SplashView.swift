@@ -17,6 +17,7 @@ struct SplashView: View {
             backgroundColor.edgesIgnoringSafeArea(.all)
 
             Label("Swiftly", systemImage: "swift")
+                .fontWeight(.medium)
                 .foregroundColor(foregroundColor)
         }
         .onAppear {
