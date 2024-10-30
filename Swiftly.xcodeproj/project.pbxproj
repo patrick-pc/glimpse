@@ -18,6 +18,9 @@
 		797AD6062CD03F6200B37309 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD6052CD03F6200B37309 /* ItemView.swift */; };
 		797AD6082CD0BE2800B37309 /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD6072CD0BE2800B37309 /* SharedComponents.swift */; };
 		797AD60A2CD167E500B37309 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD6092CD167E500B37309 /* UserView.swift */; };
+		797AD60C2CD18E5300B37309 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD60B2CD18E5300B37309 /* OpenAIService.swift */; };
+		797AD60E2CD1C39E00B37309 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD60D2CD1C39D00B37309 /* Theme.swift */; };
+		797AD6102CD1CE7D00B37309 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AD60F2CD1CE7D00B37309 /* Color.swift */; };
 		7981A02C2CCC747100CA71D4 /* SwiftlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981A02B2CCC747100CA71D4 /* SwiftlyApp.swift */; };
 		7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981A02D2CCC747100CA71D4 /* ContentView.swift */; };
 		7981A0302CCC747300CA71D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7981A02F2CCC747300CA71D4 /* Assets.xcassets */; };
@@ -69,6 +72,9 @@
 		797AD6052CD03F6200B37309 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		797AD6072CD0BE2800B37309 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
 		797AD6092CD167E500B37309 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		797AD60B2CD18E5300B37309 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		797AD60D2CD1C39D00B37309 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		797AD60F2CD1CE7D00B37309 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		7981A0282CCC747100CA71D4 /* Swiftly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7981A02B2CCC747100CA71D4 /* SwiftlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftlyApp.swift; sourceTree = "<group>"; };
 		7981A02D2CCC747100CA71D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				797AD5FF2CD03AC000B37309 /* ViewModifiers.swift */,
+				797AD60D2CD1C39D00B37309 /* Theme.swift */,
+				797AD60F2CD1CE7D00B37309 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 			children = (
 				7981A04D2CCC755400CA71D4 /* FirebaseService.swift */,
 				797AD5F42CCF325800B37309 /* RCPurchaseController.swift */,
+				797AD60B2CD18E5300B37309 /* OpenAIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -337,6 +346,7 @@
 			files = (
 				797AD6082CD0BE2800B37309 /* SharedComponents.swift in Sources */,
 				797AD6002CD03AC000B37309 /* ViewModifiers.swift in Sources */,
+				797AD6102CD1CE7D00B37309 /* Color.swift in Sources */,
 				7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */,
 				797AD6042CD03F5B00B37309 /* ItemViewModel.swift in Sources */,
 				7983BC512CCDAA180038CD8A /* BottomNavigationView.swift in Sources */,
@@ -349,6 +359,8 @@
 				797AD5FD2CD0136400B37309 /* Constants.swift in Sources */,
 				7981A04A2CCC754200CA71D4 /* AuthViewModel.swift in Sources */,
 				7981A04C2CCC754800CA71D4 /* User.swift in Sources */,
+				797AD60C2CD18E5300B37309 /* OpenAIService.swift in Sources */,
+				797AD60E2CD1C39E00B37309 /* Theme.swift in Sources */,
 				7981A04E2CCC755400CA71D4 /* FirebaseService.swift in Sources */,
 				797AD6062CD03F6200B37309 /* ItemView.swift in Sources */,
 				7981A02C2CCC747100CA71D4 /* SwiftlyApp.swift in Sources */,
