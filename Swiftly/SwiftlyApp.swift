@@ -16,7 +16,9 @@ struct SwiftlyApp: App {
 
     @StateObject private var authViewModel = AuthViewModel()
     @StateObject private var mainViewModel = MainViewModel()
+
     @State private var showSplash = true
+    @State var selectedTheme: Theme = .secondaryTheme
 
     var body: some Scene {
         WindowGroup {
@@ -24,6 +26,7 @@ struct SwiftlyApp: App {
                 ContentView()
                     .environmentObject(authViewModel)
                     .environmentObject(mainViewModel)
+                    // .environment(\.theme, selectedTheme)
                     .fontDesign(.rounded) // Apply rounded font to the entire app
 
                 if showSplash {
