@@ -6,7 +6,7 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 16) {
                 NavigationLink(destination: ChatView()) {
                     SharedComponents.card {
                         VStack(alignment: .leading, spacing: 8) {

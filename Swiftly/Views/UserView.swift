@@ -1,10 +1,3 @@
-//
-//  UserView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/29/24.
-//
-
 import RevenueCat
 import StoreKit
 import SuperwallKit
@@ -26,10 +19,10 @@ struct UserView: View {
                         InfoRow(label: "Email", value: currentUser.email)
                         InfoRow(label: "RC Entitlement", value: mainVM.isPro ? "Pro" : "Free")
                     }
-                    
-                    SharedComponents.roundButton(title: "Sign Out") {
-                        authVM.signOut()
-                    }
+
+                    // SharedComponents.roundButton(title: "Sign Out") {
+                    //     authVM.signOut()
+                    // }
                 }
                 .padding()
             }
@@ -60,7 +53,7 @@ struct UserView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        showSettings = true
+                        showSettings.toggle()
                     }) {
                         Image(systemName: "gearshape.fill")
                             .fontWeight(.semibold)

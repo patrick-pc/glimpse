@@ -1,10 +1,3 @@
-//
-//  ItemView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/28/24.
-//
-
 import SwiftUI
 
 struct ItemView: View {
@@ -17,33 +10,42 @@ struct ItemView: View {
 
     var body: some View {
         NavigationStack {
-            List {
+            VStack {
                 if itemVM.items.isEmpty {
                     Text("Nothing here yet")
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .listRowBackground(Color.clear)
                 } else {
-                    ForEach(itemVM.items) { item in
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(item.title)
-                                .font(.headline)
-                            Text(item.description)
-                                .font(.subheadline)
-                            Text("Created at: \(formattedDate(item.createdAt.dateValue()))")
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                    ScrollView {
+                        VStack(spacing: 24) {
+                            ForEach(itemVM.items) { item in
+                                SharedComponents.card {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(formattedDate(item.createdAt.dateValue()))
+                                            .font(.caption)
+                                            .foregroundColor(.primary.opacity(0.8))
+                                        Text(item.title)
+                                            .font(.title2)
+                                            .fontWeight(.semibold)
+                                        Text(item.description)
+                                            .font(.subheadline)
+                                            .padding(.top)
+                                    }
+                                }
+                                .contentShape(Rectangle()) // Makes the entire area tappable
+                                .onTapGesture {
+                                    // Set the selected item and show the edit sheet
+                                    selectedItem = item
+                                    itemTitle = item.title
+                                    itemDescription = item.description
+                                    showUpsertItemSheet = true
+                                }
+                            }
+                            .onDelete(perform: deleteItems)
                         }
-                        .contentShape(Rectangle()) // Makes the entire area tappable
-                        .onTapGesture {
-                            // Set the selected item and show the edit sheet
-                            selectedItem = item
-                            itemTitle = item.title
-                            itemDescription = item.description
-                            showUpsertItemSheet = true
-                        }
+                        .padding(.top)
+                        .padding(.horizontal)
                     }
-                    .onDelete(perform: deleteItems)
                 }
             }
             // .navigationTitle("Firestore")
@@ -128,7 +130,6 @@ struct ItemView: View {
 
     private func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter.string(from: date)
     }

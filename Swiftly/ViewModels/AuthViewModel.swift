@@ -1,15 +1,9 @@
-//
-//  AuthViewModel.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/25/24.
-//
-
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 import FirebaseFirestore
 import Foundation
+import StoreKit
 
 enum AuthState {
     case unauthenticated
@@ -86,39 +80,42 @@ class AuthViewModel: NSObject, ObservableObject {
 
     func handleSignInWithAppleCompletion(_ result: Result<ASAuthorization, Error>) {
         switch result {
-        case let .failure(failure):
-            print("Sign-in with Apple failed:", failure.localizedDescription)
-            error = .signInWithAppleFailed(failure.localizedDescription)
-        case let .success(authorization):
-            if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-                guard let nonce = currentNonce else {
-                    fatalError("Invalid state: a login callback was received, but no login request was sent.")
-                }
-                guard let appleIDToken = appleIDCredential.identityToken else {
-                    print("Unable to fetch identify token.")
-                    error = .unableToFetchIdentityToken
-                    return
-                }
-                guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                    print("Unable to serialize token string from data:", appleIDToken.debugDescription)
-                    error = .unableToSerializeIdentityToken
-                    return
-                }
+            case let .failure(failure):
+                print("Sign-in with Apple failed:", failure.localizedDescription)
+                error = .signInWithAppleFailed(failure.localizedDescription)
+            case let .success(authorization):
+                if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+                    guard let nonce = currentNonce else {
+                        fatalError("Invalid state: a login callback was received, but no login request was sent.")
+                    }
+                    guard let appleIDToken = appleIDCredential.identityToken else {
+                        print("Unable to fetch identify token.")
+                        error = .unableToFetchIdentityToken
+                        return
+                    }
+                    guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                        print("Unable to serialize token string from data:", appleIDToken.debugDescription)
+                        error = .unableToSerializeIdentityToken
+                        return
+                    }
 
-                let credential = OAuthProvider.credential(
-                    withProviderID: "apple.com",
-                    idToken: idTokenString,
-                    rawNonce: nonce
-                )
+                    let credential = OAuthProvider.credential(
+                        withProviderID: "apple.com",
+                        idToken: idTokenString,
+                        rawNonce: nonce
+                    )
 
-                Task {
-                    await signInWithFirebase(credential: credential, appleIDCredential: appleIDCredential)
+                    Task {
+                        await signInWithFirebase(credential: credential, appleIDCredential: appleIDCredential)
+                    }
                 }
-            }
         }
     }
 
-    private func signInWithFirebase(credential: AuthCredential, appleIDCredential: ASAuthorizationAppleIDCredential) async {
+    private func signInWithFirebase(
+        credential: AuthCredential,
+        appleIDCredential: ASAuthorizationAppleIDCredential
+    ) async {
         do {
             let authResult = try await Auth.auth().signIn(with: credential)
             let firebaseUser = authResult.user
@@ -167,6 +164,21 @@ class AuthViewModel: NSObject, ObservableObject {
         } catch {
             print("Error signing out:", error.localizedDescription)
             self.error = .signOutFailed
+        }
+    }
+
+    // MARK: - Manage Subscription
+
+    func showManageSubscriptions() async {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            print("Unable to get the current window scene")
+            return
+        }
+
+        do {
+            try await AppStore.showManageSubscriptions(in: windowScene)
+        } catch {
+            print("Failed to show manage subscriptions page: \(error.localizedDescription)")
         }
     }
 }
@@ -229,20 +241,20 @@ enum AuthError: LocalizedError, Identifiable {
 
     var errorDescription: String? {
         switch self {
-        case let .signInWithAppleFailed(message):
-            return "Sign-in with Apple failed: \(message)"
-        case .authenticationFailed:
-            return "Authentication failed. Please try again."
-        case .signOutFailed:
-            return "Sign-out failed. Please try again."
-        case .fetchUserFailed:
-            return "Error fetching user data."
-        case .unableToFetchIdentityToken:
-            return "Unable to fetch identity token."
-        case .unableToSerializeIdentityToken:
-            return "Unable to serialize identity token."
-        case let .custom(message):
-            return message
+            case let .signInWithAppleFailed(message):
+                return "Sign-in with Apple failed: \(message)"
+            case .authenticationFailed:
+                return "Authentication failed. Please try again."
+            case .signOutFailed:
+                return "Sign-out failed. Please try again."
+            case .fetchUserFailed:
+                return "Error fetching user data."
+            case .unableToFetchIdentityToken:
+                return "Unable to fetch identity token."
+            case .unableToSerializeIdentityToken:
+                return "Unable to serialize identity token."
+            case let .custom(message):
+                return message
         }
     }
 }
