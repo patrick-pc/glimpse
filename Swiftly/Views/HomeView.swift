@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/25/24.
-//
-
 import RevenueCat
 import StoreKit
 import SuperwallKit
@@ -26,6 +19,14 @@ struct HomeView: View {
                     SharedComponents.card {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Vision")
+                                .font(.headline)
+                        }
+                    }
+                }
+                NavigationLink(destination: CalendarView()) {
+                    SharedComponents.card {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Calendar")
                                 .font(.headline)
                         }
                     }

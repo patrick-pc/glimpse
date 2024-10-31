@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		794232D42CD2A923007D143B /* VisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794232D32CD2A923007D143B /* VisionView.swift */; };
 		794232D62CD2A937007D143B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794232D52CD2A937007D143B /* ChatView.swift */; };
+		794232D82CD326B2007D143B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794232D72CD326B2007D143B /* CalendarView.swift */; };
 		797AD5EE2CCF2BE500B37309 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 797AD5ED2CCF2BE500B37309 /* RevenueCat */; };
 		797AD5F02CCF2BE500B37309 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 797AD5EF2CCF2BE500B37309 /* RevenueCatUI */; };
 		797AD5F32CCF2F0E00B37309 /* SuperwallKit in Frameworks */ = {isa = PBXBuildFile; productRef = 797AD5F22CCF2F0E00B37309 /* SuperwallKit */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		794232D32CD2A923007D143B /* VisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionView.swift; sourceTree = "<group>"; };
 		794232D52CD2A937007D143B /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		794232D72CD326B2007D143B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		797AD5F42CCF325800B37309 /* RCPurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCPurchaseController.swift; sourceTree = "<group>"; };
 		797AD5F62CCF371B00B37309 /* SyncedProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SyncedProducts.storekit; sourceTree = "<group>"; };
 		797AD5FC2CD0136400B37309 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				797AD6092CD167E500B37309 /* UserView.swift */,
 				794232D32CD2A923007D143B /* VisionView.swift */,
 				794232D52CD2A937007D143B /* ChatView.swift */,
+				794232D72CD326B2007D143B /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */,
 				797AD6042CD03F5B00B37309 /* ItemViewModel.swift in Sources */,
 				7983BC512CCDAA180038CD8A /* BottomNavigationView.swift in Sources */,
+				794232D82CD326B2007D143B /* CalendarView.swift in Sources */,
 				794232D42CD2A923007D143B /* VisionView.swift in Sources */,
 				7981A0422CCC751100CA71D4 /* HomeView.swift in Sources */,
 				797AD6022CD03DF200B37309 /* Item.swift in Sources */,

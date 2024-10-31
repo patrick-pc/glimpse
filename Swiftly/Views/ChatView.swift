@@ -1,10 +1,3 @@
-//
-//  ChatView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/30/24.
-//
-
 import RevenueCat
 import StoreKit
 import SuperwallKit
@@ -24,18 +17,21 @@ struct ChatView: View {
                 }
             }
 
+            Spacer()
             HStack {
-                TextField("Type a message", text: $inputText)
+                TextField("Ask anything...", text: $inputText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .disabled(isLoading)
 
                 Button(action: sendMessage) {
-                    Text(isLoading ? "Sending..." : "Send")
+                    Image(systemName: "paperplane")
                 }
+                .buttonStyle(.borderedProminent)
                 .disabled(isLoading || inputText.isEmpty)
             }
             .padding()
         }
+        .padding(.bottom, 32)
     }
 
     func sendMessage() {
@@ -72,12 +68,11 @@ struct MessageView: View {
                 Spacer()
                 Text(message["content"] ?? "")
                     .padding()
-                    .background(Color.blue.opacity(0.2))
-                    .cornerRadius(10)
             } else {
                 Text(message["content"] ?? "")
                     .padding()
-                    .background(Color.gray.opacity(0.2))
+                    .foregroundColor(Color.primary.opacity(0.8))
+                    .background(Color.primary.opacity(0.1))
                     .cornerRadius(10)
                 Spacer()
             }

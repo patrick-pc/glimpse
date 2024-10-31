@@ -1,17 +1,10 @@
-//
-//  VisionView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/30/24.
-//
-
 import Foundation
 import SwiftUI
 
 struct VisionView: View {
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
-    
+
     @State private var gutHealthScore: Int?
     @State private var tips: [Tip] = []
     @State private var symptoms: [Symptom] = []
@@ -26,13 +19,13 @@ struct VisionView: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         GutHealthGauge(score: Double(score))
-                        
+
                         if !tips.isEmpty {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Tips")
                                     .font(.title3)
                                     .fontWeight(.semibold)
-                                
+
                                 VStack(spacing: 16) {
                                     ForEach(tips) { tip in
                                         VStack(alignment: .leading, spacing: 8) {
@@ -52,13 +45,13 @@ struct VisionView: View {
                                 }
                             }
                         }
-                        
+
                         if !symptoms.isEmpty {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Symptoms")
                                     .font(.title3)
                                     .fontWeight(.semibold)
-                                
+
                                 VStack(spacing: 16) {
                                     ForEach(symptoms) { symptom in
                                         VStack(alignment: .leading, spacing: 8) {
@@ -91,7 +84,6 @@ struct VisionView: View {
                     Spacer()
                 }
             }
-
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(selectedImage: $inputImage, sourceType: .photoLibrary)
@@ -100,15 +92,15 @@ struct VisionView: View {
             analyzeSelectedImage()
         }
     }
-    
+
     private func analyzeSelectedImage() {
         guard let image = inputImage,
               let imageData = image.jpegData(compressionQuality: 0.8) else { return }
-        
+
         let base64Image = imageData.base64EncodedString()
-        
+
         isProcessing = true // Start processing
-        
+
         Task {
             do {
                 let analysis = try await OpenAIService().analyzeImage(base64Image: base64Image)
@@ -118,7 +110,7 @@ struct VisionView: View {
                     self.symptoms = parseSymptoms(analysis["symptoms"] as? [[String: Any]] ?? [])
                     self.isProcessing = false
                 }
-            } catch let error {
+            } catch {
                 print(error)
                 DispatchQueue.main.async {
                     self.isProcessing = false
@@ -126,33 +118,35 @@ struct VisionView: View {
             }
         }
     }
-    
+
     struct Tip: Identifiable {
         let id = UUID()
         let tip: String
         let explanation: String
     }
-    
+
     struct Symptom: Identifiable {
         let id = UUID()
         let symptom: String
         let explanation: String
     }
-    
+
     private func parseTips(_ tipsData: [[String: Any]]) -> [Tip] {
         tipsData.compactMap { dict in
             if let tip = dict["tip"] as? String,
-               let explanation = dict["explanation"] as? String {
+               let explanation = dict["explanation"] as? String
+            {
                 return Tip(tip: tip, explanation: explanation)
             }
             return nil
         }
     }
-    
+
     private func parseSymptoms(_ symptomsData: [[String: Any]]) -> [Symptom] {
         symptomsData.compactMap { dict in
             if let symptom = dict["symptom"] as? String,
-               let explanation = dict["explanation"] as? String {
+               let explanation = dict["explanation"] as? String
+            {
                 return Symptom(symptom: symptom, explanation: explanation)
             }
             return nil
@@ -168,7 +162,10 @@ struct ImagePicker: UIViewControllerRepresentable {
             self.parent = parent
         }
 
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+        ) {
             if let uiImage = info[.originalImage] as? UIImage {
                 parent.selectedImage = uiImage
             }
@@ -191,18 +188,21 @@ struct ImagePicker: UIViewControllerRepresentable {
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {}
+    func updateUIViewController(
+        _ uiViewController: UIImagePickerController,
+        context: UIViewControllerRepresentableContext<ImagePicker>
+    ) {}
 }
 
 // Animatable modifier for the score number
 struct AnimatableNumberModifier: AnimatableModifier {
     var number: Double
-    
+
     var animatableData: Double {
         get { number }
         set { number = newValue }
     }
-    
+
     func body(content: Content) -> some View {
         content
             .overlay(
@@ -222,17 +222,17 @@ extension View {
 struct GutHealthGauge: View {
     let score: Double
     let maxScore: Double = 100
-    
+
     // Animation states
     @State private var animatedProgress: Double = 0
     @State private var showLabel: Bool = false
     @State private var animatedScore: Double = 0
-    
+
     // Calculate the progress percentage
     private var progress: Double {
         score / maxScore
     }
-    
+
     var body: some View {
         ZStack {
             // Background track
@@ -247,7 +247,7 @@ struct GutHealthGauge: View {
                     )
                 )
                 .frame(width: 250, height: 250)
-            
+
             // Progress indicator with gradient
             Circle()
                 .trim(from: 0.0, to: animatedProgress * 0.8)
@@ -258,7 +258,7 @@ struct GutHealthGauge: View {
                             .init(color: Color(hex: "#FF4B4B"), location: 0.0),
                             .init(color: Color(hex: "#FF9049"), location: 0.3),
                             .init(color: Color(hex: "#FFD749"), location: 0.6),
-                            .init(color: Color(hex: "#4BFF4B"), location: 1.0)
+                            .init(color: Color(hex: "#4BFF4B"), location: 1.0),
                         ]),
                         center: .center,
                         startAngle: .degrees(126),
@@ -271,14 +271,14 @@ struct GutHealthGauge: View {
                 )
                 .frame(width: 250, height: 250)
                 .animation(.spring(response: 1.0, dampingFraction: 0.8), value: animatedProgress)
-            
+
             // Score display with animations
             VStack {
                 // Animated number
                 Color.clear
                     .frame(height: 60)
                     .animatingOverlay(for: animatedScore)
-                
+
                 // Label with fade animation
                 Text(scoreLabel(score))
                     .font(.system(size: 20, weight: .medium))
@@ -291,39 +291,39 @@ struct GutHealthGauge: View {
         .onAppear {
             startAnimationSequence()
         }
-        .onChange(of: score) { newScore in
+        .onChange(of: score) { _ in
             startAnimationSequence()
         }
     }
-    
+
     private func startAnimationSequence() {
         // Reset states
         animatedProgress = 0
-        showLabel = false
         animatedScore = 0
-        
+        showLabel = false
+
         // Animate progress and score
         withAnimation(.spring(response: 1.0, dampingFraction: 0.8)) {
             animatedProgress = progress
             animatedScore = score
         }
-        
+
         // Show label after progress animation
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             showLabel = true
         }
     }
-    
+
     private func scoreLabel(_ score: Double) -> String {
         switch score {
-        case 0..<30:
-            return "Harmful"
-        case 30..<60:
-            return "Poor"
-        case 60..<80:
-            return "Good"
-        default:
-            return "Excellent"
+            case 0 ..< 30:
+                return "Harmful"
+            case 30 ..< 60:
+                return "Poor"
+            case 60 ..< 80:
+                return "Good"
+            default:
+                return "Excellent"
         }
     }
 }
