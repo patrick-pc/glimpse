@@ -26,11 +26,7 @@ struct UserView: View {
                         InfoRow(label: "Email", value: currentUser.email)
                         InfoRow(label: "RC Entitlement", value: mainVM.isPro ? "Pro" : "Free")
                     }
-
-                    SharedComponents.card {
-                        Text("Card")
-                    }
-
+                    
                     SharedComponents.roundButton(title: "Sign Out") {
                         authVM.signOut()
                     }
