@@ -1,10 +1,3 @@
-//
-//  SharedComponents.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/28/24.
-//
-
 import Foundation
 import SwiftUI
 
@@ -14,7 +7,7 @@ enum SharedComponents {
             Text(title)
                 .font(.headline)
                 .padding()
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .center)
                 .background(Color.primary.opacity(0.1))
                 .cornerRadius(32)
                 .overlay(
@@ -28,7 +21,7 @@ enum SharedComponents {
     static func card<Content: View>(@ViewBuilder content: () -> Content) -> some View {
         content()
             .padding(16)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color.primary.opacity(0.1))
             .cornerRadius(16)
             .overlay(

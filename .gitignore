@@ -26,3 +26,6 @@ Carthage/Build/
 
 # StoreKit
 *.storekit
+
+# SwiftFormat
+.swiftformat

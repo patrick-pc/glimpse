@@ -1,35 +1,27 @@
-//
-//  BottomNavigationView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/26/24.
-//
-
 import SwiftUI
 
 struct BottomNavigationView: View {
     @State private var selectedTab = 1
 
     var body: some View {
-        VStack(spacing: 0) {
-            TabView(selection: $selectedTab) {
-                NavigationStack {
-                    ItemView()
-                }
-                .tag(0)
-
-                NavigationStack {
-                    HomeView()
-                }
-                .tag(1)
-
-                NavigationStack {
-                    UserView()
-                }
-                .tag(2)
+        TabView(selection: $selectedTab) {
+            NavigationStack {
+                ItemView()
             }
-            // .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Enable swipe gestures
+            .tag(0)
 
+            NavigationStack {
+                HomeView()
+            }
+            .tag(1)
+
+            NavigationStack {
+                UserView()
+            }
+            .tag(2)
+        }
+        // .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Enable swipe gestures
+        .safeAreaInset(edge: .bottom) {
             HStack(spacing: 24) {
                 Spacer()
 
@@ -68,6 +60,7 @@ struct BottomNavigationView: View {
             }
             .padding(.top, 6)
             .padding(.bottom, 12)
+            .background(Color(.systemBackground))
         }
         .tint(.primary)
     }

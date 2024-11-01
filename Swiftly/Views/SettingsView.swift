@@ -1,14 +1,7 @@
-//
-//  SettingsView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/25/24.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var isFeedbackSheetPresented: Bool = false
+    @EnvironmentObject var authVM: AuthViewModel
 
     var body: some View {
         HStack {
@@ -24,297 +17,203 @@ struct SettingsView: View {
 
         ScrollView {
             VStack(spacing: 24) {
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack {
-                        Text("App")
-                            .font(.callout)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(.bottom, 4)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                // MARK: - Entitlements
 
-                    HStack {
-                        Image(systemName: "message.fill")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                        Text("Contact Us")
+                SharedComponents.card {
+                    VStack(alignment: .center, spacing: 20) {
+                        Text("Unlock Everything")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+
+                        Text("Biome includes 7 days of Biome PRO for free. Cancel anytime.")
+                            .font(.subheadline)
+                            .foregroundStyle(.primary.opacity(0.5))
+                            .frame(maxWidth: 260, alignment: .center)
+                            .multilineTextAlignment(.center)
+
+                        Button(action: {
+                            // TODO: Implement unlock everything
+                        }) {
+                            Text("Redeem 7-day free trial")
+                                .font(.headline)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal, 16)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundStyle(.background)
+                                .background(.primary)
+                                .cornerRadius(32)
+                        }
+
+                        Text("Then $29.99 per year ($2.50/month)")
                             .font(.subheadline)
                             .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
+                            .foregroundStyle(.primary.opacity(0.8))
+                            .multilineTextAlignment(.center)
                     }
-                    .padding(12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                            .opacity(0.35)
-                            .offset(x: -8)
-                    }
-                    // .background(Color(hex: 0x181818))
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                            .opacity(0.05)
-                    )
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                        Text("Leave a Review")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                            .opacity(0.35)
-                            .offset(x: -8)
-                    }
-                    // .background(Color(hex: 0x181818))
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                            .opacity(0.05)
-                    )
-                    HStack {
-                        Image(systemName: "hand.thumbsup.fill")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                        Text("Give Feedback")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                            .opacity(0.35)
-                            .offset(x: -8)
-                    }
-                    // .background(Color(hex: 0x181818))
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                            .opacity(0.05)
-                    )
-                    .onTapGesture {
-                        isFeedbackSheetPresented = true
-                    }
+                    .padding(8)
                 }
-                .frame(maxWidth: .infinity, alignment: .topLeading)
 
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack {
+                // MARK: - Support
+
+                SharedComponents.card {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Support")
+                            .font(.subheadline)
+
+                        VStack(spacing: 0) {
+                            NavigationLink(destination: Text("Contact Us")) {
+                                HStack {
+                                    Image(systemName: "message.fill")
+                                        .padding(.trailing, 8)
+                                    Text("Contact Us")
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                                .padding(.vertical, 16)
+                                .font(.headline)
+                            }
+                            Divider()
+                                .padding(.leading, 36)
+                            NavigationLink(destination: Text("Leave a Review")) {
+                                HStack {
+                                    Image(systemName: "star.fill")
+                                        .padding(.trailing, 8)
+                                    Text("Leave a Review")
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                                .padding(.vertical, 16)
+                                .font(.headline)
+                            }
+                            Divider()
+                                .padding(.leading, 36)
+
+                            NavigationLink(destination: Text("Submit Feedback")) {
+                                HStack {
+                                    Image(systemName: "hand.thumbsup.fill")
+                                        .padding(.trailing, 8)
+                                    Text("Submit Feedback")
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                                .padding(.vertical, 16)
+                                .font(.headline)
+                            }
+                            Divider()
+                                .padding(.leading, 36)
+
+                            NavigationLink(destination: Text("Share Biome")) {
+                                HStack {
+                                    Image(systemName: "square.and.arrow.up.fill")
+                                        .padding(.trailing, 8)
+                                    Text("Share Biome")
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                                .padding(.top, 16)
+                                .font(.headline)
+                            }
+                        }
+                    }
+                    .padding(8)
+                }
+
+                // MARK: - Legal
+
+                SharedComponents.card {
+                    VStack(alignment: .leading, spacing: 8) {
                         Text("Legal")
-                            .font(.callout)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(.bottom, 4)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack {
-                        Image(systemName: "book.pages.fill")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                        Text("Terms of Service")
                             .font(.subheadline)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                            .opacity(0.35)
-                            .offset(x: -8)
-                    }
-                    // .background(Color(hex: 0x181818))
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                            .opacity(0.05)
-                    )
-                    HStack {
-                        Image(systemName: "lock.fill")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                        Text("Privacy Policy")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                            .opacity(0.35)
-                            .offset(x: -8)
-                    }
-                    // .background(Color(hex: 0x181818))
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                            .opacity(0.05)
-                    )
-                }
-                .frame(maxWidth: .infinity, alignment: .topLeading)
 
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack {
-                        Text("Account")
-                            .font(.callout)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
+                        VStack(spacing: 0) {
+                            NavigationLink(destination: Text("Privacy Policy")) {
+                                HStack {
+                                    Image(systemName: "lock.fill")
+                                        .padding(.trailing, 8)
+                                    Text("Privacy Policy")
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                                .padding(.vertical, 16)
+                                .font(.headline)
+                            }
+                            Divider()
+                                .padding(.leading, 36)
+
+                            NavigationLink(destination: Text("Terms of Service")) {
+                                HStack {
+                                    Image(systemName: "doc.text.fill")
+                                        .padding(.trailing, 8)
+                                    Text("Terms of Service")
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                                .padding(.top, 16)
+                                .font(.headline)
+                            }
+                        }
                     }
-                    .padding(.bottom, 4)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack {
-                        Image(systemName: "creditcard.fill")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                        Text("Manage Subscription")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                            .opacity(0.35)
-                            .offset(x: -8)
-                    }
-                    // .background(Color(hex: 0x181818))
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                            .opacity(0.05)
-                    )
-                    HStack {
-                        Image(systemName: "rectangle.portrait.and.arrow.right.fill")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                        Text("Sign Out")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .fontDesign(.rounded)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundStyle(.primary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .clipped()
-                    }
-                    .padding(12)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(alignment: .init(horizontal: .trailing, vertical: .center)) {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.primary)
-                            .frame(width: 30, height: 30)
-                            .opacity(0.35)
-                            .offset(x: -8)
-                    }
-                    // .background(Color(hex: 0x181818))
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 1.5, lineJoin: .round))
-                            .opacity(0.05)
-                    )
+                    .padding(8)
                 }
-                .frame(maxWidth: .infinity, alignment: .topLeading)
+
+                // MARK: - Account
+
+                SharedComponents.card {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Account")
+                            .font(.subheadline)
+
+                        VStack(spacing: 0) {
+                            NavigationLink(destination: Text("patrickpc1015@gmail.com")) {
+                                HStack {
+                                    Image(systemName: "person.fill")
+                                        .padding(.trailing, 8)
+                                    Text("patrickpc1015@gmail.com")
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                                .padding(.vertical, 16)
+                                .font(.headline)
+                            }
+                            Divider()
+                                .padding(.leading, 36)
+
+                            HStack {
+                                Image(systemName: "sparkle")
+                                    .padding(.trailing, 8)
+                                Text("Manage Subscription")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                            }
+                            .padding(.vertical, 16)
+                            .font(.headline)
+                            .onTapGesture {
+                                Task {
+                                    await authVM.showManageSubscriptions()
+                                }
+                            }
+
+                            Divider()
+                                .padding(.leading, 36)
+
+                            HStack {
+                                Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+                                    .padding(.trailing, 8)
+                                Text("Sign Out")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                            }
+                            .padding(.top, 16)
+                            .font(.headline)
+                            .onTapGesture {
+                                authVM.signOut()
+                            }
+                        }
+                    }
+                    .padding(8)
+                }
             }
-        }
-        .padding()
-        .sheet(isPresented: $isFeedbackSheetPresented) {
-            Text("Feedback")
+            .padding()
         }
     }
 }
