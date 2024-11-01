@@ -31,6 +31,14 @@ struct HomeView: View {
                         }
                     }
                 }
+                NavigationLink(destination: ArticleView()) {
+                    SharedComponents.card {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Articles")
+                                .font(.headline)
+                        }
+                    }
+                }
             }
         }
         .padding()

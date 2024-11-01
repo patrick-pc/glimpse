@@ -63,6 +63,7 @@
 		7981A0812CCC80FA00CA71D4 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981A0802CCC80FA00CA71D4 /* MainViewModel.swift */; };
 		7981A0852CCC9D1400CA71D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7981A0842CCC9D1400CA71D4 /* GoogleService-Info.plist */; };
 		7983BC512CCDAA180038CD8A /* BottomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983BC502CCDAA180038CD8A /* BottomNavigationView.swift */; };
+		79F4F5DC2CD44FCA00E1E8C5 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F4F5DB2CD44FCA00E1E8C5 /* ArticleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		7981A0842CCC9D1400CA71D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7981A0862CCC9EC900CA71D4 /* Swiftly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Swiftly.entitlements; sourceTree = "<group>"; };
 		7983BC502CCDAA180038CD8A /* BottomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigationView.swift; sourceTree = "<group>"; };
+		79F4F5DB2CD44FCA00E1E8C5 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				794232D32CD2A923007D143B /* VisionView.swift */,
 				794232D52CD2A937007D143B /* ChatView.swift */,
 				794232D72CD326B2007D143B /* CalendarView.swift */,
+				79F4F5DB2CD44FCA00E1E8C5 /* ArticleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				797AD6082CD0BE2800B37309 /* SharedComponents.swift in Sources */,
 				797AD6002CD03AC000B37309 /* ViewModifiers.swift in Sources */,
 				797AD6102CD1CE7D00B37309 /* Color.swift in Sources */,
+				79F4F5DC2CD44FCA00E1E8C5 /* ArticleView.swift in Sources */,
 				7981A02E2CCC747100CA71D4 /* ContentView.swift in Sources */,
 				797AD6042CD03F5B00B37309 /* ItemViewModel.swift in Sources */,
 				7983BC512CCDAA180038CD8A /* BottomNavigationView.swift in Sources */,
