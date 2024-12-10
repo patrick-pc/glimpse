@@ -63,7 +63,7 @@ private extension SwiftlyApp {
 
         /// Always configure Superwall first. Pass in the `purchaseController` you just created.
         Superwall.configure(
-            apiKey: "pk_65d8a586a6f84a166634bea9b2b3a0b8b05c51745ab9fd64",
+            apiKey: "pk_d2def9c411cab0518870cd3e6d85ef89b30ecbd97b3381a0",
             purchaseController: purchaseController
         )
         Superwall.shared.identify(userId: userId)
@@ -71,7 +71,7 @@ private extension SwiftlyApp {
         // MARK: Step 3 – Configure RevenueCat
 
         /// Always configure RevenueCat after Superwall
-        Purchases.configure(withAPIKey: "appl_jWmCnQpSCjzWVUJfKHsBHDNRotb", appUserID: userId)
+        Purchases.configure(withAPIKey: "appl_QohpDVLiJahGHiefKIJjWTQTafm", appUserID: userId)
 
         // MARK: Step 4 – Sync Subscription Status
 
