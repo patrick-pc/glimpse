@@ -1,43 +1,41 @@
-//
-//  SplashView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/25/24.
-//
-
 import SwiftUI
 
 struct SplashView: View {
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.theme) var theme
 
     @State private var isActive = false
+    @State private var opacity: Double = 0
+    @State private var scale: CGFloat = 0.75
 
     var body: some View {
         ZStack {
-            backgroundColor.edgesIgnoringSafeArea(.all)
+            theme.backgroundColor.ignoresSafeArea(.all)
 
-            Label("Swiftly", systemImage: "swift")
-                .fontWeight(.medium)
-                .foregroundColor(foregroundColor)
+            VStack(spacing: 16) {
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+
+                Text("glimpse")
+                    .foregroundStyle(theme.primaryColor)
+            }
+            .font(.title)
+            .fontWeight(.semibold)
+            .opacity(opacity)
+            .scaleEffect(scale)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            withAnimation(.easeIn(duration: 0.5)) {
+                opacity = 1
+                scale = 1
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation {
                     isActive = true
                 }
             }
         }
     }
-
-    private var backgroundColor: Color {
-        colorScheme == .dark ? .black : .white
-    }
-
-    private var foregroundColor: Color {
-        colorScheme == .dark ? .white : .black
-    }
-}
-
-#Preview {
-    SplashView()
 }

@@ -1,24 +1,26 @@
-//
-//  ContentView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/25/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var mainVM: MainViewModel
     @EnvironmentObject var authVM: AuthViewModel
+    @Environment(\.theme) var theme
 
     var body: some View {
-        ZStack {
-            if authVM.authState == .unauthenticated {
-                AuthView()
-            } else {
-                BottomNavigationView()
+        NavigationStack {
+            GeometryReader { _ in
+                ZStack {
+                    theme.backgroundColor.ignoresSafeArea(.all)
+
+                    if authVM.authState == .unauthenticated {
+                        AuthView()
+                    } else {
+                        HomeView()
+                    }
+                }
             }
         }
+        .tint(theme.secondaryColor)
+        .foregroundStyle(theme.primaryColor)
         .onAppear {
             setupInitialState()
         }
@@ -39,17 +41,7 @@ struct ContentView: View {
         } else {
             mainVM.currentPage = .onboarding
         }
+
+        mainVM.checkSubscriptionStatus()
     }
-}
-
-enum Page: String {
-    case splash = "Splash"
-    case auth = "Auth"
-    case onboarding = "Onboarding"
-    case home = "Home"
-    case settings = "Settings"
-}
-
-#Preview {
-    ContentView()
 }

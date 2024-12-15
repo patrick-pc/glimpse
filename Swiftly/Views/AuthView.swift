@@ -1,14 +1,8 @@
-//
-//  AuthView.swift
-//  Swiftly
-//
-//  Created by Patrick on 10/25/24.
-//
-
 import AuthenticationServices
 import SwiftUI
 
 struct AuthView: View {
+    @Environment(\.theme) var theme
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var authVM: AuthViewModel
 
@@ -16,20 +10,18 @@ struct AuthView: View {
         VStack(spacing: 32) {
             Spacer()
 
-            Image(systemName: "swift", variableValue: 0)
-                .font(.system(size: 64))
-                .fontWeight(.bold)
-                .imageScale(.large)
+            Image("logo")
+                .resizable()
+                .scaledToFit()
                 .frame(width: 84, height: 84)
 
             VStack(alignment: .center, spacing: 8) {
-                Text("Welcome to Swiftly")
+                Text("Welcome to glimpse")
                     .font(.title2)
                     .fontWeight(.semibold)
 
-                Text("Fast and flexible SwiftUI boilerplate")
-                    .font(.subheadline)
-                    .foregroundStyle(.gray)
+                Text("Discover your new fit")
+                    .foregroundStyle(theme.secondaryColor)
             }
 
             Spacer()
@@ -52,8 +44,4 @@ struct AuthView: View {
         }
         .padding()
     }
-}
-
-#Preview {
-    AuthView()
 }

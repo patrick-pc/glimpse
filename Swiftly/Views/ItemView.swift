@@ -134,7 +134,3 @@ struct ItemView: View {
         return formatter.string(from: date)
     }
 }
-
-#Preview {
-    ItemView()
-}
